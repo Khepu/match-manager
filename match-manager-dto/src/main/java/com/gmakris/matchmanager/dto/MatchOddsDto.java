@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public record MatchOddsDto(
     UUID id,
-    UUID matchId,
+    MatchDto match,
     String specifier,
     Double odd
 ) {
