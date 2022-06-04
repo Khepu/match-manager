@@ -1,9 +1,8 @@
 package com.gmakris.matchmanager.service.crud.impl;
 
-import com.gmakris.matchmanager.entity.model.AbstractEntity;
 import reactor.core.scheduler.Scheduler;
 
-public class AbstractCrudService<Entity extends AbstractEntity> {
+public class AbstractCrudService {
 
     protected final Scheduler dbScheduler;
 
