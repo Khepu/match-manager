@@ -12,7 +12,9 @@ import lombok.NoArgsConstructor;
 public class SchedulerProperties {
 
     /**
-     * Maximum number of threads to be used.
+     * Maximum number of threads to be used. Must be exactly
+     * the same as those assigned to hikari in
+     * spring.datasource.hikari.maximum-pool-size.
      */
     private int threads;
 
