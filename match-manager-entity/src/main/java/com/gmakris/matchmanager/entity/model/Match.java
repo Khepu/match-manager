@@ -1,6 +1,7 @@
 package com.gmakris.matchmanager.entity.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,10 +20,10 @@ public class Match extends AbstractEntity {
     private String description;
 
     @Column(name = "match_date")
-    private LocalDateTime matchDate;
+    private LocalDate matchDate;
 
     @Column(name = "match_time")
-    private LocalDateTime matchTime;
+    private LocalTime matchTime;
 
     @Column(name = "team_a")
     private String teamA;

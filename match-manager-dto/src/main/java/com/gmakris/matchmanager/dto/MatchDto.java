@@ -1,13 +1,14 @@
 package com.gmakris.matchmanager.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 public record MatchDto(
     UUID id,
     String description,
-    LocalDateTime matchDate,
-    LocalDateTime matchTime,
+    LocalDate matchDate,
+    LocalTime matchTime,
     String teamA,
     String teamB,
     int sport
