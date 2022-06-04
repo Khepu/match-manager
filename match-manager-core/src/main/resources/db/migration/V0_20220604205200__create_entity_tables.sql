@@ -2,13 +2,13 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE matches
 (
-    id          UUID                        NOT NULL,
-    description VARCHAR                     NOT NULL,
-    match_date  TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    match_time  TIMESTAMP WITHOUT TIME ZONE NOT NULL,
-    team_a      VARCHAR                     NOT NULL,
-    team_b      VARCHAR                     NOT NULL,
-    sport       INTEGER                     NOT NULL,
+    id          UUID    NOT NULL,
+    description VARCHAR NOT NULL,
+    match_date  DATE    NOT NULL,
+    match_time  TIME    NOT NULL,
+    team_a      VARCHAR NOT NULL,
+    team_b      VARCHAR NOT NULL,
+    sport       INTEGER NOT NULL,
 
     PRIMARY KEY (id)
 );
