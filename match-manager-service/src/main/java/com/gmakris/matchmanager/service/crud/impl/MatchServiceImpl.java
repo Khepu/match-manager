@@ -75,11 +75,11 @@ public class MatchServiceImpl
     }
 
     @Override
-    public Mono<Match> delete(final Match match) {
+    public Mono<Void> delete(final UUID matchId) {
         return Mono
             .defer(() -> Mono
-                .fromRunnable(() -> repository.delete(match))
-                .thenReturn(match))
+                .fromRunnable(() -> repository.deleteById(matchId))
+                .then())
             .subscribeOn(dbScheduler)
             .publishOn(parallel());
     }

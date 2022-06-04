@@ -14,5 +14,5 @@ public interface MatchOddsService {
 
     Mono<MatchOdds> update(MatchOdds matchOdds);
 
-    Mono<MatchOdds> delete(MatchOdds matchOdds);
+    Mono<Void> delete(UUID matchOddsId);
 }
