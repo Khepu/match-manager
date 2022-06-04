@@ -14,7 +14,6 @@ import lombok.EqualsAndHashCode;
 public class MatchOdds extends AbstractEntity{
 
     @OneToOne
-    @Column(name = "match_id")
     private Match match;
 
     @Column(name = "specifier")
