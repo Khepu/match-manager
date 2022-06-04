@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: match-manager
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: ${DB_PASSWORD:postgres}
+    username: ${DB_USER:postgres}
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_DATABASE:match_manager}
+    hikari:
+      maximum-pool-size: ${DB_THREADS:20}
+      pool-name: hikari-pool
+
+match-manager:
+  service:
+    db-scheduler:
+      threads: ${DB_THREADS:20}
+      buffer-size: ${DB_SCHEDULER_BUFFER_SIZE:100}
+      seconds-to-live: ${DB_SCHEDULER_SECONDS_TO_LIVE:300}
