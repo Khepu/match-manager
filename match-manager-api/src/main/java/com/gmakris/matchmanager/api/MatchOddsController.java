@@ -117,7 +117,8 @@ public class MatchOddsController
                 .error("Unhandled error for server-request '{}'!",
                     serverRequest,
                     throwable))
-            .onErrorResume(throwable -> internalServerError());
+            .onErrorResume(throwable -> internalServerError())
+            .switchIfEmpty(badRequest());
     }
 
     @Override
