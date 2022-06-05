@@ -12,4 +12,9 @@ public class CustomHttpResponses {
         return status(HttpStatus.INTERNAL_SERVER_ERROR)
             .build();
     }
+
+    public static Mono<ServerResponse> badRequest() {
+        return status(HttpStatus.BAD_REQUEST)
+            .build();
+    }
 }

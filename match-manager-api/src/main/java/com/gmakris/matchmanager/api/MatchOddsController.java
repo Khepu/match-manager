@@ -1,5 +1,6 @@
 package com.gmakris.matchmanager.api;
 
+import static com.gmakris.matchmanager.api.util.CustomHttpResponses.badRequest;
 import static com.gmakris.matchmanager.api.util.CustomHttpResponses.internalServerError;
 import static java.util.Objects.requireNonNull;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -21,6 +22,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
+import reactor.util.annotation.NonNull;
 
 @Slf4j
 @Component
@@ -46,6 +48,7 @@ public class MatchOddsController
             .body(matchOddsDtos, MatchOddsDto.class);
     }
 
+    @NonNull
     private Mono<ServerResponse> findAll(final ServerRequest serverRequest) {
         return Mono.just(
                 matchOddsService.findAll()
@@ -58,6 +61,7 @@ public class MatchOddsController
             .onErrorResume(throwable -> internalServerError());
     }
 
+    @NonNull
     private Mono<ServerResponse> findOne(final ServerRequest serverRequest) {
         return Mono.justOrEmpty(serverRequest.pathVariable("id"))
             .map(UUID::fromString)
@@ -71,6 +75,7 @@ public class MatchOddsController
             .onErrorResume(throwable -> internalServerError());
     }
 
+    @NonNull
     private Mono<ServerResponse> create(final ServerRequest serverRequest) {
         return serverRequest.bodyToMono(MatchOddsDto.class)
             .map(matchOddsMapper::from)
@@ -84,19 +89,23 @@ public class MatchOddsController
             .onErrorResume(throwable -> internalServerError());
     }
 
+    @NonNull
     private Mono<ServerResponse> update(final ServerRequest serverRequest) {
         return serverRequest.bodyToMono(MatchOddsDto.class)
             .map(matchOddsMapper::from)
             .flatMap(matchOddsService::update)
             .map(matchOddsMapper::to)
-            .transform(this::ok)
+            .flatMap(matchOdds -> Mono.just(matchOdds)
+                .transform(this::ok))
             .doOnError(throwable -> log
                 .error("Unhandled error for server-request '{}'!",
                     serverRequest,
                     throwable))
-            .onErrorResume(throwable -> internalServerError());
+            .onErrorResume(throwable -> internalServerError())
+            .switchIfEmpty(badRequest());
     }
 
+    @NonNull
     private Mono<ServerResponse> delete(final ServerRequest serverRequest) {
         return Mono.justOrEmpty(serverRequest.pathVariable("id"))
             .map(UUID::fromString)

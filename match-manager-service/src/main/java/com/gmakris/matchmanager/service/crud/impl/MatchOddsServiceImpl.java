@@ -66,6 +66,7 @@ public class MatchOddsServiceImpl
         return Mono
             .defer(() -> Mono
                 .fromCallable(() -> repository.findOneById(matchOdds.getId()))
+                .flatMap(Mono::justOrEmpty)
                 .flatMap(__ -> Mono
                     .fromCallable(() -> repository.save(matchOdds))
                     .thenReturn(matchOdds)))
