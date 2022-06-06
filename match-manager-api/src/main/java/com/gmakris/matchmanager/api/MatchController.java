@@ -116,8 +116,7 @@ public class MatchController
                 .error("Unhandled error for server-request '{}'!",
                     serverRequest,
                     throwable))
-            .onErrorResume(throwable -> internalServerError())
-            .switchIfEmpty(badRequest());
+            .onErrorResume(throwable -> internalServerError());
     }
 
     @Override
