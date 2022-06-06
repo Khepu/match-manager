@@ -121,10 +121,10 @@ public class MatchOddsController
 
     @Override
     public RouterFunction<ServerResponse> routes() {
-        return route(GET("/match/"), this::findAll)
-            .and(route(GET("/match/{id}"), this::findOne))
-            .and(route(PUT("/match/"), this::create))
-            .and(route(PATCH("/match/"), this::update))
-            .and(route(DELETE("/match/"), this::delete));
+        return route(GET("/match-odds/"), this::findAll)
+            .and(route(GET("/match-odds/{id}"), this::findOne))
+            .and(route(PUT("/match-odds/"), this::create))
+            .and(route(PATCH("/match-odds/"), this::update))
+            .and(route(DELETE("/match-odds/"), this::delete));
     }
 }
