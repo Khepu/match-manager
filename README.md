@@ -1,5 +1,10 @@
 # Match Manager
 
+## REST API
+
+A complete documentation of the available endpoints can be found under `/docs` in the
+form of a postman collection.
+
 ## Environmentals
 
 This project's configuration is best altered through environmental variables.
