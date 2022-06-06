@@ -16,6 +16,7 @@ services:
 
   match-manager:
     image: match-manager:1
+    container_name: match-manager
     restart: unless-stopped
     ports:
       - "8080:8080"
