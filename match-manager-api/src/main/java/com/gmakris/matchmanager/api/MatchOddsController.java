@@ -12,7 +12,6 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 import java.util.UUID;
 import com.gmakris.matchmanager.dto.MatchOddsDto;
-import com.gmakris.matchmanager.entity.model.MatchOdds;
 import com.gmakris.matchmanager.mapper.MatchOddsMapper;
 import com.gmakris.matchmanager.service.crud.MatchOddsService;
 import lombok.extern.slf4j.Slf4j;
