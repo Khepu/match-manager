@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:14.3
+    container_name: mm-postgres
+    restart: unless-stopped
+    ports:
+      - "5442:5432"
+    environment:
+      POSTGRES_DB: "match_manager"
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - "mm-postgres-data:/var/lib/postgresql/data"
+
+  match-manager:
+    image: match-manager:1
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: postgres
+
+volumes:
+  mm-postgres-data:
